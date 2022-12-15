@@ -1,0 +1,24 @@
+﻿@using bookStoreV1.ViewModels
+@model CreateBookViewModel
+
+@{
+    ViewData["Title"] = "CreateBook";
+}
+
+<h1>CreateBook</h1>
+
+<form method="post">
+    <div>
+        <input asp-for="Title" placeholder="Title" />
+        <input asp-for="Author" placeholder="Author" />
+        <input asp-for="Description" placeholder="Description" />
+        <input asp-for="PubTitle" placeholder="PubTitle" />
+        <input asp-for="BookImageFile" placeholder="Your Image File" />
+    </div>
+    <div>
+        <input asp-for="IsExist" placeholder="Is Exist" name="IsExist" />
+        <label for="IsEx">Is Exist</label>
+    </div>
+    <button type="submit">Create</button>
+</form>
+

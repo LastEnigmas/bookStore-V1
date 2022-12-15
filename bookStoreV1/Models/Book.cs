@@ -11,12 +11,11 @@ namespace bookStoreV1.Models
         [Required]
         public string Author { get; set; }
         [Required]
-        public string ISBN { get; set; }
-        [Required]
         public string Description { get; set; }
         [Required]
+        public string BookImage { get; set; }
+        [Required]
         public bool IsExist { get; set; }
-        public List<string> Tags { get; set; }
         public int Discount { get; set; }
         [Required]
         public bool IsDiscount { get; set; }
