@@ -1,3 +1,5 @@
+using bookStoreV1.Core.Repository;
+using bookStoreV1.Core.Services;
 using bookStoreV1.DbContextFolder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("strCon")
     ));
+builder.Services.AddScoped<IBookService, BookRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

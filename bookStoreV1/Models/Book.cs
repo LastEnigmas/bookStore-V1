@@ -9,6 +9,8 @@ namespace bookStoreV1.Models
         [Required] 
         public string Title { get; set; }
         [Required]
+        public int MyBookId { get; set; }
+        [Required]
         public string Author { get; set; }
         [Required]
         public string Description { get; set; }
