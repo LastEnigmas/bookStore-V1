@@ -24,5 +24,7 @@ namespace bookStoreV1.Models
         public DateTime Created { get; set; } = DateTime.Now;
         [Required]
         public string PubTitle { get; set; }
+        [Required]
+        public float Price { get; set; }
     }
 }

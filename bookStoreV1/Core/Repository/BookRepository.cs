@@ -27,6 +27,7 @@ namespace bookStoreV1.Core.Repository
                 Discount = 0,
                 BookImage = "",
                 MyBookId = CreateMyBookId.CreateId(),
+                Price = book.Price,
             };
 
 

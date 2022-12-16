@@ -57,6 +57,9 @@ namespace bookStoreV1.Migrations
                     b.Property<int>("MyBookId")
                         .HasColumnType("int");
 
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
                     b.Property<string>("PubTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

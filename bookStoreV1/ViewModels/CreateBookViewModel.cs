@@ -18,5 +18,7 @@ namespace bookStoreV1.ViewModels
         public bool IsExist { get; set; }
         [Required]
         public string PubTitle { get; set; }
+        [Required]
+        public float Price { get; set; }
     }
 }
