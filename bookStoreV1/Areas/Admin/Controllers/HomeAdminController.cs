@@ -51,6 +51,23 @@ namespace bookStoreV1.Areas.Admin.Controllers
 
         #region Delete_And_Edit
 
+        [Route("BookDelete")]
+        public IActionResult BookDelete(int id)
+        {
+            AdminDeleteBookViewModel adminDeleteBookViewModel = new AdminDeleteBookViewModel();
+            adminDeleteBookViewModel = _bookService.GetBookInfo(id);
+            return View(adminDeleteBookViewModel);
+        }
+
+        [Route("BookDelete")]
+        [HttpPost]
+        public IActionResult BookDelete(AdminDeleteBookViewModel deleteBook)
+        {
+            bool result = _bookService.DeleteBook(deleteBook.MyBookId);
+            ViewBag.IsDelete = result;
+            return View();
+        }
+
         #endregion
 
 

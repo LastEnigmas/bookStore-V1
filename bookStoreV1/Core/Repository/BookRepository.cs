@@ -52,6 +52,11 @@ namespace bookStoreV1.Core.Repository
             return result ;
         }
 
+
+        public Book FindBookByMyBookId(int id)
+        {
+            return _db.Books.SingleOrDefault(u => u.MyBookId == id);
+        }
         public AdminAllBooks GetAllBooks(int pageId, string bookName, string author)
         {
             IQueryable<Book> result = _db.Books;
@@ -74,14 +79,71 @@ namespace bookStoreV1.Core.Repository
 
             return allBokks;
         }
-
         public bool IsBookCreate(int myBookId)
         {
             return _db.Books.Any(x => x.MyBookId == myBookId);
         }
+
+
         public void Save()
         {
             _db.SaveChanges();
         }
+
+
+        #region Delete
+        public bool IsDeleteBook(int id)
+        {
+            Book book = new Book();
+            book = FindBookByMyBookId(id);
+            if (book != null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool DeleteBook(int bookId)
+        {
+            Book book = new Book();
+            book = FindBookByMyBookId(bookId);
+            if (book != null)
+            {
+                _db.Books.Remove(book);
+                Save();
+                return IsDeleteBook(bookId);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public AdminDeleteBookViewModel GetBookInfo(int myBookId)
+        {
+            Book book = new Book();
+            book = _db.Books.FirstOrDefault(x => x.MyBookId == myBookId);
+            if( book != null)
+            {
+                AdminDeleteBookViewModel bookViewModel = new AdminDeleteBookViewModel()
+                {
+                    MyBookId = myBookId,
+                    BookImageName = book.BookImage,
+                    TitleBook = book.Title,
+                    Author = book.Author,
+                };
+
+                return bookViewModel;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+
+
+        #endregion
     }
 }
